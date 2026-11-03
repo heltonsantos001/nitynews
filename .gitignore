@@ -1,0 +1,39 @@
+```gitignore
+# Compilação
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# Arquivos de ambiente e segredos
+.env
+.env.*
+appsettings.Development.json
+
+# Banco de dados SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Publicação
+publish/
+artifacts/
+```
+
+.aider*

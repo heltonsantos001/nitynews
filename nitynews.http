@@ -1,0 +1,20 @@
+@nitynews_HostAddress = http://localhost:5209
+
+### Cadastrar Usuário
+POST {{nitynews_HostAddress}}/api/usuario/cadastrar
+Content-Type: application/json
+
+{
+  "nome": "João Silva",
+  "email": "joao@exemplo.com"
+}
+
+###
+
+### Buscar Usuário por ID
+# Substitua pelo ID retornado no cadastro
+@usuarioId = 00000000-0000-0000-0000-000000000000
+GET {{nitynews_HostAddress}}/api/usuario/buscar/{{usuarioId}}
+Accept: application/json
+
+###
