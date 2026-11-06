@@ -1,20 +1,46 @@
 @nitynews_HostAddress = http://localhost:5209
 
-### Cadastrar Usuário
+### 1. Cadastrar Novo Usuário (Sucesso)
 POST {{nitynews_HostAddress}}/api/usuario/cadastrar
 Content-Type: application/json
 
 {
-  "nome": "João Silva",
-  "email": "joao@exemplo.com"
+  "nome": "Carlos Drummond",
+  "email": "carlos.drummond@exemplo.com"
 }
 
-###
+### 2. Cadastrar com E-mail Duplicado (Teste de Conflito - 409 Conflict)
+POST {{nitynews_HostAddress}}/api/usuario/cadastrar
+Content-Type: application/json
 
-### Buscar Usuário por ID
-# Substitua pelo ID retornado no cadastro
-@usuarioId = 00000000-0000-0000-0000-000000000000
+{
+  "nome": "Carlos Drummond Clone",
+  "email": "carlos.drummond@exemplo.com"
+}
+
+### 3. Cadastrar com Dados Inválidos (Teste de Validação - 400 Bad Request)
+POST {{nitynews_HostAddress}}/api/usuario/cadastrar
+Content-Type: application/json
+
+{
+  "nome": "A",
+  "email": "email_invalido_sem_arroba"
+}
+
+### 4. Buscar Todos os Usuários
+GET {{nitynews_HostAddress}}/api/usuario/buscar
+Accept: application/json
+
+### 5. Buscar Usuário por ID Válido
+# Substitua pelo Guid retornado no cadastro
+@usuarioId = 61ca620d-a4c3-4956-bf12-db3334079759
 GET {{nitynews_HostAddress}}/api/usuario/buscar/{{usuarioId}}
 Accept: application/json
 
-###
+### 6. Buscar Usuário com ID Inexistente (404 Not Found)
+GET {{nitynews_HostAddress}}/api/usuario/buscar/00000000-0000-0000-0000-000000000001
+Accept: application/json
+
+### 7. Desativar Usuário por ID (Exclusão Lógica)
+PUT {{nitynews_HostAddress}}/api/usuario/delete/{{usuarioId}}
+Accept: application/json
